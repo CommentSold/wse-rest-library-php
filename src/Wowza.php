@@ -102,6 +102,8 @@ class Wowza
             $ch = curl_init($restURL);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $verbType);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->settings->getConnectionTimeout());
+            curl_setopt($ch, CURLOPT_TIMEOUT, $this->settings->getRequestTimeout());
 
             if ($this->settings->isUseDigest()) {
                 curl_setopt($ch, CURLOPT_USERPWD,

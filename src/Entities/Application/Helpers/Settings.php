@@ -28,6 +28,12 @@ class Settings
     /** @var bool */
     private $useDigest;
 
+    /** @var int */
+    private $connectionTimeout;
+
+    /** @var int */
+    private $requestTimeout;
+
     /**
      * Settings constructor.
      *
@@ -46,7 +52,9 @@ class Settings
         $vhostInstance = '_defaultVHost_',
         $username = '',
         $password = '',
-        $useDigest = true
+        $useDigest = true,
+        $connectionTimeout = 300,
+        $requestTimeout = 0
     ) {
         $this->debug = $debug;
         $this->host = $host;
@@ -55,6 +63,8 @@ class Settings
         $this->username = $username;
         $this->password = $password;
         $this->useDigest = $useDigest;
+        $this->connectionTimeout = $connectionTimeout;
+        $this->requestTimeout = $requestTimeout;
     }
 
     /**
@@ -221,6 +231,54 @@ class Settings
     public function setUseDigest($useDigest)
     {
         $this->useDigest = $useDigest;
+
+        return $this;
+    }
+
+    /**
+     * Get ConnectionTimeout
+     *
+     * @return int
+     */
+    public function getConnectionTimeout()
+    {
+        return $this->connectionTimeout;
+    }
+
+    /**
+     * Set ConnectionTimeout
+     *
+     * @param int $connectionTimeout
+     *
+     * @return Settings
+     */
+    public function setConnectionTimeout($connectionTimeout)
+    {
+        $this->connectionTimeout = $connectionTimeout;
+
+        return $this;
+    }
+
+    /**
+     * Get RequestTimeout
+     *
+     * @return int
+     */
+    public function getRequestTimeout()
+    {
+        return $this->requestTimeout;
+    }
+
+    /**
+     * Set RequestTimeout
+     *
+     * @param int $requestTimeout
+     *
+     * @return Settings
+     */
+    public function setRequestTimeout($requestTimeout)
+    {
+        $this->requestTimeout = $requestTimeout;
 
         return $this;
     }
